@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Party GameHub - The ultimate mobile party game collection featuring 26 games across 5 spice levels. Perfect for any group size up to 50 players. No setup needed.">
+    <meta name="keywords"
+        content="party games, drinking games, truth or dare, never have i ever, would you rather, trivia games, group games, social games, game night">
+    <meta name="author" content="HAKILABZ">
+
+    <!-- Open Graph / Social SEO -->
+    <meta property="og:title" content="Party GameHub | HAKILABZ">
+    <meta property="og:description"
+        content="26 party games in one app. From Truth or Dare to Battle Royale Trivia, there's a game for every group and every mood.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hakilabz.ai/partygamehub">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Party GameHub | HAKILABZ">
+    <meta name="twitter:description" content="26 party games in one app. No setup needed.">
+    <title>Party GameHub | HAKILABZ</title>
+    <!-- Use HAKILABZ core css -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Party GameHub Specific Styles */
+        :root {
+            --pgh-primary: #FF2D6B;
+            --pgh-secondary: #7B61FF;
+            --pgh-accent: #00FFB2;
+            --pgh-gradient: linear-gradient(135deg, #FF2D6B 0%, #7B61FF 100%);
+        }
+
+        .pgh-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .pgh-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 45, 107, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(123, 97, 255, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .pgh-app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .pgh-title {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .pgh-title span {
+            background: var(--pgh-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pgh-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .pgh-store-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .store-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .store-btn:hover {
+            border-color: var(--pgh-primary);
+            box-shadow: 0 4px 16px rgba(255, 45, 107, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .pgh-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .pgh-feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: left;
+        }
+
+        .pgh-feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pgh-feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/assets/images/hakilabz-logo.png" alt="HAKILABZ Logo" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Back to Main</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="/partygamehub/privacy/">Privacy Policy</a></li>
+                    <li><a href="/partygamehub/terms/">Terms</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pgh-hero">
+        <div class="pgh-hero-bg"></div>
+        <div class="container">
+            <img src="/assets/images/partygamehub-icon.jpg" alt="Party GameHub App Icon" class="pgh-app-icon">
+            <h1 class="pgh-title">Party <span>GameHub</span></h1>
+            <p class="pgh-subtitle">26 Games. One App. Endless Fun.</p>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                From Truth or Dare to Battle Royale Trivia, there's a game for every group and every mood. Choose from 5
+                spice levels - family-friendly to adult-only.
+            </p>
+
+            <div class="pgh-store-buttons">
+                <button class="store-btn" onclick="alert('Coming soon to the App Store!')">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z">
+                        </path>
+                        <path d="M10 2c1 .5 2 2 2 5"></path>
+                    </svg>
+                    App Store
+                </button>
+                <button class="store-btn" onclick="alert('Coming soon to Google Play!')">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Google Play
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="container">
+        <div class="section-header">
+            <h2 class="section-title">Why Party GameHub?</h2>
+            <div class="title-underline" style="background: var(--pgh-gradient);"></div>
+        </div>
+
+        <div class="pgh-features-grid">
+            <div class="pgh-feature-card">
+                <div class="pgh-feature-icon">🎮</div>
+                <h3 class="pgh-feature-title">26 Games in One</h3>
+                <p style="color: var(--text-secondary);">Never run out of party games. From classics like Truth or Dare
+                    to unique modes like Dare Chain, everything is available instantly.</p>
+            </div>
+            <div class="pgh-feature-card">
+                <div class="pgh-feature-icon">🌶️</div>
+                <h3 class="pgh-feature-title">5 Spice Levels</h3>
+                <p style="color: var(--text-secondary);">Corporate, Family, Casual, Wild, and Spicy. Every game adapts
+                    its content completely to fit your chosen intensity level.</p>
+            </div>
+            <div class="pgh-feature-card">
+                <div class="pgh-feature-icon">👥</div>
+                <h3 class="pgh-feature-title">2 to 50 Players</h3>
+                <p style="color: var(--text-secondary);">Play locally by passing the phone, or host a game in Online
+                    Multiplayer mode where everyone joins on their own device.</p>
+            </div>
+            <div class="pgh-feature-card">
+                <div class="pgh-feature-icon">⚡</div>
+                <h3 class="pgh-feature-title">Zero Setup required</h3>
+                <p style="color: var(--text-secondary);">No accounts, no sign-ups, no cards. Add player names and start
+                    the party in literally 5 seconds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 HAKILABZ. All rights reserved.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="/partygamehub/privacy/" rel="noopener noreferrer"
+                        style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Privacy
+                        Policy</a>
+                    <a href="/partygamehub/terms/" rel="noopener noreferrer"
+                        style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Terms of
+                        Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Use Main script for theme toggling -->
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>
