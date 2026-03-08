@@ -1,6 +1,0 @@
-name = "hakilabz-website"
-compatibility_date = "2026-02-01"
-
-# Specify this is a static assets project
-[assets]
-directory = "."
