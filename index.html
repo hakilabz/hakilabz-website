@@ -1,38 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta name="robots" content="noimageindex, noarchive">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="HAKILABZ - Pioneering AI-Powered Applications for the Future">
-    <meta name="keywords" content="AI, Apps, Artificial Intelligence, HAKILABZ, GETFIT">
+    <meta name="keywords" content="AI, Apps, Artificial Intelligence, HAKILABZ, GETFIT, Party GameHub">
     <meta name="author" content="HAKILABZ">
     <title>HAKILABZ | AI-Powered Applications</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
-    <!-- Base Meta Tags -->
-    <meta name="theme-color" content="#0D0D14">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#06060F" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/png" href="/assets/images/hakilabz-logo.png">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hakilabz.ai/">
     <meta property="og:title" content="HAKILABZ | Innovating the future with AI">
-    <meta property="og:description" content="The mission of HAKILABZ is to bring AI to all common people by integrating and creating applications for everyone.">
+    <meta property="og:description" content="Democratizing AI through beautifully crafted applications for everyone.">
     <meta property="og:image" content="https://hakilabz.ai/assets/images/hakilabz-logo.png">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://hakilabz.ai/">
-    <meta property="twitter:title" content="HAKILABZ | Innovating the future with AI">
-    <meta property="twitter:description" content="The mission of HAKILABZ is to bring AI to all common people by integrating and creating applications for everyone.">
-    <meta property="twitter:image" content="https://hakilabz.ai/assets/images/hakilabz-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hakilabz.ai/">
+    <meta name="twitter:title" content="HAKILABZ | Innovating the future with AI">
+    <meta name="twitter:description" content="Democratizing AI through beautifully crafted applications for everyone.">
+    <meta name="twitter:image" content="https://hakilabz.ai/assets/images/hakilabz-logo.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJQPFG6QYC"></script>
 </head>
 
 <body>
@@ -41,7 +45,7 @@
         <div class="container">
             <div class="nav-content">
                 <div class="logo">
-                    <img src="/assets/images/hakilabz-logo.png" alt="HAKILABZ Logo" class="logo-img">
+                    <a href="/"><img src="/assets/images/hakilabz-logo.png" alt="HAKILABZ" class="logo-img"></a>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -49,36 +53,34 @@
                     <li><a href="#products">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
-                        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
-                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="5"></circle>
-                                <line x1="12" y1="1" x2="12" y2="3"></line>
-                                <line x1="12" y1="21" x2="12" y2="23"></line>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                <line x1="1" y1="12" x2="3" y2="12"></line>
-                                <line x1="21" y1="12" x2="23" y2="12"></line>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                             </svg>
-                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                             </svg>
                         </button>
                     </li>
                 </ul>
-                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
-        </nav>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -87,13 +89,14 @@
         </div>
         <div class="container">
             <div class="hero-content">
+                <div class="hero-badge">✦ AI-Powered Innovation</div>
                 <h1 class="hero-title">
                     <span class="gradient-text">Empowering Humanity</span><br>
                     through AI Innovation
                 </h1>
                 <p class="hero-subtitle">
-                    At HAKILABZ, our mission is to seamlessly integrate Artificial Intelligence into everyday life,
-                    crafting premium applications designed for everyone.
+                    At HAKILABZ, our mission is to make Artificial Intelligence accessible to everyone —
+                    crafting elegant, futuristic applications that enrich everyday life.
                 </p>
                 <div class="hero-cta">
                     <a href="#products" class="btn btn-primary">Explore Our Apps</a>
@@ -102,62 +105,46 @@
             </div>
         </div>
         <div class="scroll-indicator">
-            <div class="mouse"></div>
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About HAKILABZ</h2>
-                <div class="title-underline"></div>
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">Who We Are</div>
+                <h2 class="section-title">Built for the Future</h2>
+                <p class="section-subtitle">Where cutting-edge AI meets elegant, human-centred design</p>
             </div>
-            <div class="about-content">
-                <div class="about-grid">
-                    <div class="about-item">
-                        <div class="icon-wrapper">
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                            </svg>
-                        </div>
-                        <h3>AI Innovation</h3>
-                        <p>Leveraging cutting-edge artificial intelligence to solve real-world problems</p>
-                    </div>
-                    <div class="about-item">
-                        <div class="icon-wrapper">
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                            </svg>
-                        </div>
-                        <h3>User-Centric Design</h3>
-                        <p>Creating intuitive experiences that put users first in every interaction</p>
-                    </div>
-                    <div class="about-item">
-                        <div class="icon-wrapper">
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M12 6v6l4 2" />
-                            </svg>
-                        </div>
-                        <h3>Future-Ready</h3>
-                        <p>Building tomorrow's solutions with today's most advanced technologies</p>
-                    </div>
+            <div class="about-grid stagger-children">
+                <div class="about-card animate-on-scroll">
+                    <div class="about-icon">⚡</div>
+                    <h3>AI Innovation</h3>
+                    <p>Leveraging frontier AI to solve real-world problems with precision and elegance.</p>
                 </div>
-                <div class="about-description">
-                    <p>
-                        At HAKILABZ, our mission is to democratize Artificial Intelligence. We believe that AI shouldn't
-                        be a privilege, but a universally accessible tool that enriches everyday experiences. Our team
-                        of visionaries and engineers work relentlessly to craft applications that are not just powerful,
-                        but effortlessly intuitive.
-                    </p>
-                    <p>
-                        We bridge the gap between complex technology and elegant design. Every application we develop is
-                        a testament to our commitment to excellence—meticulously engineered, rigorously tested, and
-                        designed to inspire.
-                    </p>
+                <div class="about-card animate-on-scroll">
+                    <div class="about-icon">🎯</div>
+                    <h3>User-Centric Design</h3>
+                    <p>Creating intuitive experiences that feel effortless — backed by deep user research.</p>
                 </div>
+                <div class="about-card animate-on-scroll">
+                    <div class="about-icon">🚀</div>
+                    <h3>Future-Ready</h3>
+                    <p>Building for tomorrow — scalable, secure, and evolving with the technology landscape.</p>
+                </div>
+            </div>
+            <div class="about-text animate-on-scroll">
+                <p>
+                    At HAKILABZ, we believe AI shouldn't be a privilege reserved for a few — it should
+                    be a universally accessible tool that enriches everyday experiences. Our team of visionaries
+                    and engineers work relentlessly to craft applications that are powerful yet effortlessly intuitive.
+                </p>
+                <p>
+                    We bridge the gap between complex technology and elegant design. Every application is a testament
+                    to our commitment to excellence — meticulously engineered, rigorously tested, designed to inspire.
+                </p>
             </div>
         </div>
     </section>
@@ -165,110 +152,67 @@
     <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">What We Build</div>
                 <h2 class="section-title">Our Products</h2>
-                <div class="title-underline"></div>
                 <p class="section-subtitle">Discover our innovative AI-powered applications</p>
             </div>
-            <div class="products-grid">
-                <!-- Party GameHub App -->
-                <div class="product-card featured">
-                    <div class="product-badge">Launch Imminent</div>
-                    <div class="product-image">
-                        <div class="icon-wrapper-large" style="margin-bottom:0; background: transparent;">
-                            <img src="/assets/images/partygamehub-icon.jpg" alt="Party GameHub Icon">
-                        </div>
+            <div class="products-grid stagger-children">
+
+                <!-- Party GameHub -->
+                <div class="product-card animate-on-scroll">
+                    <div class="product-badge">🎮 Live Now</div>
+                    <div class="product-icon">
+                        <img loading="lazy" src="/assets/images/partygamehub-icon.jpg" alt="Party GameHub">
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Party GameHub</h3>
-                        <p class="product-tagline">26 Games. One App. Endless Fun.</p>
-                        <p class="product-description">
-                            Party GameHub puts 26 party games in your pocket. From Truth or Dare to Battle Royale
-                            Trivia, there's a game for every group and every mood.
-                        </p>
-                        <ul class="product-features">
-                            <li>
-                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                26 Unique Party Games
-                            </li>
-                            <li>
-                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                5 Adjustable Spice Levels
-                            </li>
-                            <li>
-                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                Support for 2 to 50 Players
-                            </li>
-                        </ul>
-                        <div class="product-cta">
-                            <a href="/partygamehub" class="btn btn-primary">Discover Party GameHub</a>
-                        </div>
+                    <div class="product-name">Party GameHub</div>
+                    <div class="product-tagline">26 Games. One App. Endless Fun.</div>
+                    <p class="product-description">
+                        Party GameHub puts 26 party games in your pocket. From Truth or Dare to
+                        Battle Royale Trivia — there's a game for every group and every mood.
+                    </p>
+                    <div class="product-features">
+                        <div class="feature-item">26 Unique Party Games</div>
+                        <div class="feature-item">5 Adjustable Spice Levels</div>
+                        <div class="feature-item">Supports 2 to 50 Players</div>
+                    </div>
+                    <div class="product-cta">
+                        <a href="/partygamehub/" class="btn btn-primary">Discover Party GameHub</a>
                     </div>
                 </div>
 
-                <!-- GETFIT App -->
-                <div class="product-card featured">
-                    <div class="product-badge">Launching Soon</div>
-                    <div class="product-image">
-                        <div class="icon-wrapper-large" style="margin-bottom:0; background: transparent;">
-                            <img src="/assets/images/getfit-logo.png" alt="GETFIT App Logo">
-                        </div>
+                <!-- GETFIT -->
+                <div class="product-card animate-on-scroll">
+                    <div class="product-badge">🏃 Coming Soon</div>
+                    <div class="product-icon">
+                        <img loading="lazy" src="/assets/images/getfit-logo.png" alt="GETFIT">
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">GETFIT</h3>
-                        <p class="product-tagline">Your AI-Powered Fitness Companion</p>
-                        <p class="product-description">
-                            GETFIT revolutionizes personal fitness with intelligent workout planning,
-                            real-time form correction, and personalized nutrition guidance.
-                        </p>
-                        <ul class="product-features">
-                            <li>
-                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                AI-Personalized Workout Plans
-                            </li>
-                            <li>
-                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                Real-Time Form Analysis
-                            </li>
-                            <li>
-                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                Smart Nutrition Tracking
-                            </li>
-                        </ul>
-                        <div class="product-cta">
-                            <button class="btn btn-primary" disabled style="opacity: 0.7;">Coming to App Store</button>
-                        </div>
+                    <div class="product-name">GETFIT</div>
+                    <div class="product-tagline">Your AI-Powered Fitness Companion</div>
+                    <p class="product-description">
+                        GETFIT revolutionizes personal fitness with intelligent workout planning,
+                        real-time form correction, and personalized nutrition guidance.
+                    </p>
+                    <div class="product-features">
+                        <div class="feature-item">AI-Personalized Workout Plans</div>
+                        <div class="feature-item">Real-Time Form Analysis</div>
+                        <div class="feature-item">Smart Nutrition Tracking</div>
+                    </div>
+                    <div class="product-cta">
+                        <button class="btn btn-secondary" disabled>Coming to App Store</button>
                     </div>
                 </div>
 
-                <!-- Future Products Placeholder -->
-                <div class="product-card upcoming">
-                    <div class="product-content-center">
-                        <div class="icon-wrapper-large"
-                            style="margin: 0 auto 1.5rem auto; border: 2px dashed var(--border-color); background: transparent;">
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                style="width: 40px; height: 40px; color: var(--text-muted);">
-                                <path d="M12 2v20M2 12h20" />
-                            </svg>
-                        </div>
-                        <h3 class="product-title" style="color: var(--text-muted);">More Innovating</h3>
-                        <p class="product-description" style="color: var(--text-muted);">
-                            Our lab is constantly working on new AI experiences. Stay tuned.
-                        </p>
-                    </div>
+                <!-- Coming Soon -->
+                <div class="product-card animate-on-scroll"
+                    style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:360px;">
+                    <div style="font-size:3rem; margin-bottom:1.5rem; opacity:0.3;">+</div>
+                    <div class="product-name" style="color:var(--text-3); font-size:1.25rem;">More Coming</div>
+                    <p class="product-description" style="color:var(--text-3); margin-bottom:0;">
+                        Our lab is constantly working on new AI experiences. Stay tuned.
+                    </p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -276,61 +220,89 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="title-underline"></div>
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Let's Talk</h2>
+                <p class="section-subtitle">Interested in our work? We'd love to hear from you.</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
+            <div class="contact-wrapper">
+                <div class="contact-info animate-on-scroll">
                     <h3>Connect With Us</h3>
-                    <p>
-                        Interested in our applications or have questions? We'd love to hear from you.
-                    </p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
-                            </svg>
-                            <a href="mailto:support@hakilabz.ai">support@hakilabz.ai</a>
-                        </div>
+                    <p>Whether you have questions about our apps, want to collaborate, or just want to say hello — our
+                        inbox is always open.</p>
+                    <div class="contact-links">
+                        <a href="mailto:support@hakilabz.ai" class="contact-link">
+                            <div class="contact-link-icon">✉️</div>
+                            support@hakilabz.ai
+                        </a>
+                        <a href="mailto:info@hakilabz.ai" class="contact-link">
+                            <div class="contact-link-icon">💼</div>
+                            info@hakilabz.ai
+                        </a>
                     </div>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="What's on your mind?"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img loading="lazy" src="/assets/images/hakilabz-logo.png" alt="HAKILABZ Logo" class="footer-logo">
-                    <p>Innovating the future with AI-powered applications</p>
+                    <img loading="lazy" src="/assets/images/hakilabz-logo.png" alt="HAKILABZ" class="logo-img">
+                    <p>Innovating the future with AI-powered applications for everyone.</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#products">Products</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="/privacy">Privacy Policy</a></li>
-                            <li><a href="/terms">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy/">Privacy Policy</a></li>
+                        <li><a href="/terms/">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 HAKILABZ. All rights reserved.</p>
+                <p><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <p>We use cookies to improve your experience and analyse website traffic. <a href="/privacy/">Learn more</a>.
+        </p>
+        <div class="cookie-buttons">
+            <button class="btn-accept" id="cookie-accept">Accept</button>
+            <button class="btn-decline" id="cookie-decline">Decline</button>
+        </div>
+    </div>
 
     <script src="/assets/js/script.js"></script>
 </body>
