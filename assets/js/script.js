@@ -161,3 +161,59 @@ window.addEventListener('load', () => {
 console.log('%c🚀 HAKILABZ', 'font-size: 24px; font-weight: bold; color: #FF1744;');
 console.log('%cWelcome to HAKILABZ! Innovating with AI.', 'font-size: 14px; color: #B0B0B0;');
 console.log('%cInterested in joining our team? Email us at info@hakilabz.com', 'font-size: 12px; color: #808080;');
+
+// Cookie Banner Logic
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookieConsent')) {
+        const banner = document.createElement('div');
+        banner.className = 'cookie-banner';
+        banner.innerHTML = `
+            <p>We use cookies to improve your experience and analyze website traffic. <a href="/privacy" style="color: var(--accent-color);">Learn more</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-accept">Accept</button>
+                <button id="decline-cookies" class="btn-decline">Decline</button>
+            </div>
+        `;
+        document.body.appendChild(banner);
+
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(20px)';
+            setTimeout(() => banner.remove(), 300);
+            initAnalytics();
+        });
+
+        document.getElementById('decline-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(20px)';
+            setTimeout(() => banner.remove(), 300);
+        });
+    } else if (localStorage.getItem('cookieConsent') === 'accepted') {
+        initAnalytics();
+    }
+
+    function initAnalytics() {
+        // ── GOOGLE ANALYTICS ──────────────────────────────────────────────────────
+        // Replace 'G-XXXXXXXXXX' with your real Measurement ID from analytics.google.com
+        const GA_MEASUREMENT_ID = 'G-SJQPFG6QYC';
+        // ──────────────────────────────────────────────────────────────────────────
+
+        // Dynamically inject the gtag.js script (consent-gated, GDPR-compliant)
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID, {
+            anonymize_ip: true,        // GDPR: anonymize IPs
+            cookie_flags: 'SameSite=None;Secure'
+        });
+        console.log('Analytics initialized for', GA_MEASUREMENT_ID);
+    }
+});
