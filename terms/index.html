@@ -1,186 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
-    <meta name="robots" content="noimageindex, noarchive">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HAKILABZ Terms of Service">
+    <meta name="robots" content="noimageindex, noarchive">
+    <meta name="description" content="HAKILABZ Terms of Service — the rules and guidelines for using our services.">
     <title>Terms of Service | HAKILABZ</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     <style>
-        .legal-content {
-            padding: 120px 0 60px;
-            max-width: 800px;
+        .legal-page {
+            padding: 100px 0 80px;
+        }
+
+        .legal-page .legal-inner {
+            max-width: 760px;
             margin: 0 auto;
         }
 
-        .legal-content h1 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            background: var(--gradient-primary);
+        .legal-page h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: var(--grad-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 0.5rem;
         }
 
-        .legal-content h2 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+        .legal-meta {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            margin-bottom: 3rem;
         }
 
-        .legal-content p {
-            color: var(--text-secondary);
+        .legal-page h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-1);
+            margin-top: 2.5rem;
+            margin-bottom: 0.875rem;
+        }
+
+        .legal-page p {
+            color: var(--text-2);
             line-height: 1.8;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.97rem;
         }
 
-        .legal-content ul {
-            color: var(--text-secondary);
+        .legal-page ul {
+            color: var(--text-2);
             line-height: 1.8;
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+            font-size: 0.97rem;
+        }
+
+        .legal-page a {
+            color: var(--red);
+        }
+
+        .legal-page li {
+            margin-bottom: 0.4rem;
         }
     </style>
-
-    <!-- Base Meta Tags -->
-    <meta name="theme-color" content="#0D0D14">
-    <link rel="icon" type="image/png" href="/assets/images/hakilabz-logo.png">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hakilabz.ai/terms/">
-    <meta property="og:title" content="Terms of Service | HAKILABZ">
-    <meta property="og:description" content="HAKILABZ Terms of Service">
-    <meta property="og:image" content="https://hakilabz.ai/assets/images/hakilabz-logo.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://hakilabz.ai/terms/">
-    <meta property="twitter:title" content="Terms of Service | HAKILABZ">
-    <meta property="twitter:description" content="HAKILABZ Terms of Service">
-    <meta property="twitter:image" content="https://hakilabz.ai/assets/images/hakilabz-logo.png">
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
+
+    <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">
-                    <a href="/">
-                        <img src="/assets/images/hakilabz-logo.png" alt="HAKILABZ Logo" class="logo-img">
-                    </a>
-                </div>
-                <ul class="nav-links">
+                <a href="/" class="logo" aria-label="HAKILABZ Home">
+                    <img src="/assets/images/hakilabz-logo.png" alt="HAKILABZ" class="logo-img" id="nav-logo">
+                </a>
+                <ul class="nav-links" id="nav-links">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/#products">Products</a></li>
+                    <li><a href="/#contact">Contact</a></li>
                     <li>
-                        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
-                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="5"></circle>
-                                <line x1="12" y1="1" x2="12" y2="3"></line>
-                                <line x1="12" y1="21" x2="12" y2="23"></line>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                <line x1="1" y1="12" x2="3" y2="12"></line>
-                                <line x1="21" y1="12" x2="23" y2="12"></line>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+                            <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                             </svg>
-                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                             </svg>
                         </button>
                     </li>
                 </ul>
-                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="nav-links">
+                    <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
-        </nav>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="container">
-        <div class="legal-content">
-            <h1>Terms of Service</h1>
-            <p>Last updated: March 2026</p>
+    <main class="legal-page">
+        <div class="container">
+            <div class="legal-inner">
+                <h1>Terms of Service</h1>
+                <p class="legal-meta">Last updated: March 2026</p>
 
-            <p>Welcome to HAKILABZ. By accessing or using our websites, products, and applications, you agree to comply
-                with and be bound by these Terms of Service.</p>
+                <p>Welcome to HAKILABZ. By accessing or using our website, products, and applications, you agree to
+                    comply with and be bound by these Terms of Service. Please read them carefully.</p>
 
-            <h2>1. Acceptance of Terms</h2>
-            <p>By accessing our website or using any of our applications, you agree to be bound by these Terms. If you
-                disagree with any part of these terms, you may not access our services.</p>
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing our website or using any of our applications, you agree to be bound by these Terms. If
+                    you disagree with any part of these terms, you may not access our services.</p>
 
-            <h2>2. User Accounts</h2>
-            <p>When you create an account with us, you must provide information that is accurate, complete, and current
-                at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate
-                termination of your account.</p>
+                <h2>2. Use of Services</h2>
+                <p>You agree to use our services only for lawful purposes and in a way that does not infringe upon the
+                    rights of others. You must not:</p>
+                <ul>
+                    <li>Use our services in any way that is unlawful or fraudulent.</li>
+                    <li>Transmit any harmful, offensive, or disruptive content.</li>
+                    <li>Attempt to gain unauthorised access to any part of our systems.</li>
+                    <li>Reverse engineer, decompile, or disassemble our applications.</li>
+                </ul>
 
-            <h2>3. Intellectual Property</h2>
-            <p>The Service and its original content, features, and functionality are and will remain the exclusive
-                property of HAKILABZ and its licensors. Our intellectual property is protected by copyright, trademark,
-                and other laws.</p>
+                <h2>3. User Accounts</h2>
+                <p>When you create an account with us, you must provide accurate, complete, and current information. You
+                    are responsible for safeguarding your account credentials and for all activities that occur under
+                    your account.</p>
 
-            <h2>4. Limitation of Liability</h2>
-            <p>In no event shall HAKILABZ, nor its directors, employees, partners, agents, suppliers, or affiliates, be
-                liable for any indirect, incidental, special, consequential or punitive damages, including without
-                limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access
-                to or use of or inability to access or use the Service.</p>
+                <h2>4. Intellectual Property</h2>
+                <p>The services and their original content, features, and functionality are and will remain the
+                    exclusive property of HAKILABZ and its licensors. Our trademarks, logos, and trade names may not be
+                    used without prior written permission.</p>
 
-            <h2>5. Changes to Terms</h2>
-            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing
-                to access or use our Service after those revisions become effective, you agree to be bound by the
-                revised terms.</p>
+                <h2>5. Disclaimer of Warranties</h2>
+                <p>Our services are provided on an "as is" and "as available" basis without any warranties, express or
+                    implied. HAKILABZ makes no representations or warranties of any kind regarding the accuracy,
+                    reliability, or completeness of the services.</p>
 
-            <h2>6. Contact Us</h2>
-            <p>If you have any questions about these Terms, please contact us at <a
-                    href="mailto:support@hakilabz.ai">support@hakilabz.ai</a>.</p>
+                <h2>6. Limitation of Liability</h2>
+                <p>In no event shall HAKILABZ, its directors, employees, or affiliates be liable for any indirect,
+                    incidental, special, consequential, or punitive damages arising out of or related to your use of or
+                    inability to use the services.</p>
+
+                <h2>7. Governing Law</h2>
+                <p>These Terms shall be governed by and construed in accordance with applicable law, without regard to
+                    conflict of law principles.</p>
+
+                <h2>8. Changes to Terms</h2>
+                <p>We reserve the right to modify or replace these Terms at any time. We will provide notice of
+                    significant changes. Your continued use of our services after revisions become effective constitutes
+                    acceptance of the revised terms.</p>
+
+                <h2>9. Contact Us</h2>
+                <p>If you have any questions about these Terms, please contact us at <a
+                        href="mailto:support@hakilabz.ai">support@hakilabz.ai</a>.</p>
+            </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-brand">
-                    <img loading="lazy" src="/assets/images/hakilabz-logo.png" alt="HAKILABZ" class="footer-logo">
-                    <p>Building the future with intelligent applications.</p>
+                    <img loading="lazy" src="/assets/images/hakilabz-logo.png" alt="HAKILABZ" class="logo-img">
+                    <p>Innovating the future with AI-powered applications.</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="/#about">About</a></li>
-                            <li><a href="/#products">Products</a></li>
-                            <li><a href="/#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="/privacy.html">Privacy Policy</a></li>
-                            <li><a href="/terms.html">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/#about">About Us</a></li>
+                        <li><a href="/#products">Products</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy/">Privacy Policy</a></li>
+                        <li><a href="/terms/">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 HAKILABZ. All rights reserved.</p>
+                <p><a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
             </div>
         </div>
     </footer>

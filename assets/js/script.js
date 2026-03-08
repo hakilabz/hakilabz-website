@@ -1,187 +1,311 @@
 /**
- * HAKILABZ — Website Script
- * Light & Feathery • AI Futuristic Design
+ * HAKILABZ — Premium Script
+ * Canvas particles • 3D tilt • Logo filter swap • Scroll reveal
  */
 
-// ── Theme (light default) ────────────────────────────────────────
+/* ─── Theme (default = light) ────────────────────────────────── */
 const html = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
 
-function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    // Update meta theme-color for mobile browsers
-    const metaTheme = document.querySelector('meta[name="theme-color"]:not([media])');
-    if (metaTheme) metaTheme.content = theme === 'dark' ? '#06060F' : '#ffffff';
+const LOGO_LIGHT = '/assets/images/hakilabz-logo.png';
+const LOGO_DARK = '/assets/images/hakilabz-logo-dark.png';
+
+function swapLogos(theme) {
+    const src = theme === 'dark' ? LOGO_DARK : LOGO_LIGHT;
+    document.querySelectorAll('img.logo-img').forEach(img => { img.src = src; });
 }
 
-// Determine initial theme:
-// 1. Saved pref, 2. system pref, 3. default → light
-const saved = localStorage.getItem('theme');
-if (saved === 'dark') {
-    applyTheme('dark');
-} else if (!saved && window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
-    applyTheme('dark');
-} else {
-    applyTheme('light');
+function applyTheme(t) {
+    html.setAttribute('data-theme', t);
+    localStorage.setItem('hakilabz-theme', t);
+    swapLogos(t);
 }
+
+(function initTheme() {
+    const saved = localStorage.getItem('hakilabz-theme');
+    if (saved) { applyTheme(saved); return; }
+    // Respect system pref, but default to light
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    applyTheme(prefersDark ? 'dark' : 'light');
+})();
 
 themeToggle?.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
 });
 
-// ── Hamburger Menu ────────────────────────────────────────────────
-const hamburgerBtn = document.getElementById('hamburger-btn');
-const navLinks = document.querySelector('.nav-links');
+// System pref change listener
+window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('hakilabz-theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+    }
+});
 
-function closeMenu() {
-    if (!hamburgerBtn || !navLinks) return;
-    hamburgerBtn.classList.remove('open');
+/* ─── Hamburger ──────────────────────────────────────────────── */
+const hamburger = document.getElementById('hamburger-btn');
+const navLinks = document.getElementById('nav-links');
+
+function closeNav() {
+    if (!hamburger || !navLinks) return;
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
     navLinks.classList.remove('open');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
 }
 
-if (hamburgerBtn && navLinks) {
-    hamburgerBtn.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        hamburgerBtn.classList.toggle('open', isOpen);
-        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
+hamburger?.addEventListener('click', () => {
+    const open = navLinks?.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+});
 
-    document.addEventListener('click', (e) => {
-        if (!hamburgerBtn.contains(e.target) && !navLinks.contains(e.target)) {
-            closeMenu();
-        }
-    });
+document.addEventListener('click', e => {
+    if (hamburger && navLinks && !hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        closeNav();
+    }
+});
 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) closeMenu();
-    });
-}
+window.addEventListener('resize', () => { if (window.innerWidth > 768) closeNav(); }, { passive: true });
 
-// ── Smooth Scroll ─────────────────────────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
+/* ─── Smooth scroll ──────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
         if (!target) return;
         e.preventDefault();
-        const offset = 72;
-        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
-        closeMenu();
+        const top = target.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: 'smooth' });
+        closeNav();
     });
 });
 
-// ── Navbar scroll shadow ──────────────────────────────────────────
-const navbar = document.querySelector('.navbar');
+/* ─── Navbar scroll shadow ───────────────────────────────────── */
+const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 60) {
-        navbar?.style.setProperty('box-shadow', 'var(--shadow-md)');
-    } else {
-        navbar?.style.setProperty('box-shadow', 'none');
-    }
+    navbar?.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-// ── Active nav highlight ──────────────────────────────────────────
-const sections = document.querySelectorAll('section[id]');
-const navLinkEls = document.querySelectorAll('.nav-links a');
+/* ─── Active nav ─────────────────────────────────────────────── */
+const sections = [...document.querySelectorAll('section[id]')];
+const navAs = document.querySelectorAll('.nav-links a[href^="#"]');
 
-function updateActiveNav() {
-    const scrollY = window.pageYOffset;
-    sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        const bottom = top + section.offsetHeight;
-        const id = section.getAttribute('id');
-        if (scrollY >= top && scrollY < bottom) {
-            navLinkEls.forEach(a => {
-                a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
-            });
+const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`));
         }
     });
-}
-window.addEventListener('scroll', updateActiveNav, { passive: true });
+}, { rootMargin: '-30% 0px -60% 0px' });
 
-// ── Scroll-in animations ──────────────────────────────────────────
-const animatedEls = document.querySelectorAll('.animate-on-scroll');
-const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-        }
-    });
+sections.forEach(s => navObserver.observe(s));
+
+/* ─── Scroll reveal ──────────────────────────────────────────── */
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-animatedEls.forEach(el => io.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ── Hero parallax (desktop only) ──────────────────────────────────
-if (window.innerWidth > 768) {
-    const heroContent = document.querySelector('.hero-content');
+/* ─── Canvas Particle Hero ───────────────────────────────────── */
+(function initParticles() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], raf;
+    const COUNT = Math.min(70, Math.floor(window.innerWidth / 20));
+
+    function resize() {
+        W = canvas.offsetWidth;
+        H = canvas.offsetHeight;
+        canvas.width = W * window.devicePixelRatio;
+        canvas.height = H * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    function Particle() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.r = Math.random() * 1.5 + 0.5;
+        this.a = Math.random() * 0.5 + 0.1;
+    }
+    Particle.prototype.update = function () {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0) this.x = W;
+        if (this.x > W) this.x = 0;
+        if (this.y < 0) this.y = H;
+        if (this.y > H) this.y = 0;
+    };
+
+    function getParticleColor() {
+        return html.getAttribute('data-theme') === 'dark'
+            ? `rgba(232,25,44,`
+            : `rgba(200,20,40,`;
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, W, H);
+        const col = getParticleColor();
+
+        // Draw lines between close particles
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `${col}${((1 - dist / 120) * 0.18).toFixed(3)})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Draw dots
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `${col}${p.a})`;
+            ctx.fill();
+            p.update();
+        });
+
+        raf = requestAnimationFrame(draw);
+    }
+
+    function init() {
+        resize();
+        particles = Array.from({ length: COUNT }, () => new Particle());
+        cancelAnimationFrame(raf);
+        draw();
+    }
+
+    window.addEventListener('resize', () => { resize(); particles.forEach(p => { p.x = Math.min(p.x, W); p.y = Math.min(p.y, H); }); }, { passive: true });
+
+    // Pause when hidden (save perf)
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(raf);
+        else draw();
+    });
+
+    init();
+})();
+
+/* ─── 3D Tilt Effect on cards ────────────────────────────────── */
+(function initTilt() {
+    // Only on pointer devices
+    if (!window.matchMedia('(hover: hover)').matches) return;
+
+    const SELECTOR = '.card, .product-card, .pgh-card';
+    const STRENGTH = 8; // degrees
+
+    document.querySelectorAll(SELECTOR).forEach(el => {
+        let bounds;
+
+        el.addEventListener('mouseenter', () => { bounds = el.getBoundingClientRect(); });
+
+        el.addEventListener('mousemove', e => {
+            if (!bounds) bounds = el.getBoundingClientRect();
+            const x = (e.clientX - bounds.left) / bounds.width - 0.5; // -0.5 to 0.5
+            const y = (e.clientY - bounds.top) / bounds.height - 0.5;
+            el.style.transform = `perspective(800px) rotateX(${-y * STRENGTH}deg) rotateY(${x * STRENGTH}deg) translateY(-6px)`;
+        });
+
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = '';
+            bounds = null;
+        });
+    });
+})();
+
+/* ─── Parallax hero (desktop only) ──────────────────────────── */
+if (window.matchMedia('(hover: hover)').matches && window.innerWidth > 768) {
+    const hc = document.querySelector('.hero-content');
     window.addEventListener('scroll', () => {
-        const y = window.pageYOffset;
-        if (heroContent && y < window.innerHeight) {
-            heroContent.style.transform = `translateY(${y * 0.25}px)`;
-            heroContent.style.opacity = String(1 - (y / window.innerHeight) * 0.6);
+        const y = window.scrollY;
+        if (hc && y < window.innerHeight) {
+            hc.style.transform = `translateY(${y * 0.22}px)`;
+            hc.style.opacity = String(1 - (y / window.innerHeight) * 0.55);
         }
     }, { passive: true });
 }
 
-// ── Contact form (simple) ─────────────────────────────────────────
-document.getElementById('contact-form')?.addEventListener('submit', function (e) {
+/* ─── Contact form (opens user's mail client) ───────────────────── */
+document.getElementById('contact-form')?.addEventListener('submit', e => {
     e.preventDefault();
-    const btn = this.querySelector('[type="submit"]');
-    btn.textContent = 'Message Sent ✓';
-    btn.disabled = true;
-    btn.style.opacity = '0.7';
-    setTimeout(() => {
-        btn.textContent = 'Send Message';
-        btn.disabled = false;
-        btn.style.opacity = '';
-        this.reset();
-    }, 3000);
-});
+    const form = e.target;
+    const name = form.querySelector('[name="name"]')?.value.trim() || '';
+    const email = form.querySelector('[name="email"]')?.value.trim() || '';
+    const message = form.querySelector('[name="message"]')?.value.trim() || '';
 
-// ── Cookie Banner ─────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-    const banner = document.getElementById('cookie-banner');
-    const consent = localStorage.getItem('cookieConsent');
+    const subject = encodeURIComponent(`Website message from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:support@hakilabz.ai?subject=${subject}&body=${body}`;
 
-    if (banner) {
-        if (consent) {
-            banner.remove();
-            if (consent === 'accepted') initAnalytics();
-        } else {
-            document.getElementById('cookie-accept')?.addEventListener('click', () => {
-                localStorage.setItem('cookieConsent', 'accepted');
-                banner.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                banner.style.opacity = '0';
-                banner.style.transform = 'translateY(20px)';
-                setTimeout(() => banner.remove(), 400);
-                initAnalytics();
-            });
-
-            document.getElementById('cookie-decline')?.addEventListener('click', () => {
-                localStorage.setItem('cookieConsent', 'declined');
-                banner.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                banner.style.opacity = '0';
-                banner.style.transform = 'translateY(20px)';
-                setTimeout(() => banner.remove(), 400);
-            });
-        }
+    const btn = document.getElementById('contact-submit');
+    if (btn) {
+        btn.textContent = 'Opening Mail App ✓';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.textContent = 'Send Message';
+            btn.disabled = false;
+            form.reset();
+        }, 3500);
     }
 });
 
-function initAnalytics() {
-    const GA_ID = 'G-SJQPFG6QYC';
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA_ID, { anonymize_ip: true, cookie_flags: 'SameSite=None;Secure' });
+/* ─── Cookie Banner ──────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookie-banner');
+    const consent = localStorage.getItem('hakilabz-cookie');
+
+    if (!banner) return;
+    if (consent === 'accepted') { banner.remove(); initAnalytics(); return; }
+    if (consent === 'declined') { banner.remove(); return; }
+
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+        localStorage.setItem('hakilabz-cookie', 'accepted');
+        hideBanner(banner);
+        initAnalytics();
+    });
+    document.getElementById('cookie-decline')?.addEventListener('click', () => {
+        localStorage.setItem('hakilabz-cookie', 'declined');
+        hideBanner(banner);
+    });
+});
+
+function hideBanner(el) {
+    el.style.transition = 'opacity 0.35s, transform 0.35s';
+    el.style.opacity = '0';
+    const isMobile = window.innerWidth <= 600;
+    el.style.transform = isMobile ? 'translateY(16px)' : 'translateX(-50%) translateY(16px)';
+    setTimeout(() => el.remove(), 360);
 }
 
-// ── Easter Egg ────────────────────────────────────────────────────
-console.log('%c⚡ HAKILABZ', 'font-size:24px; font-weight:900; color:#E8192C;');
-console.log('%cAI-Powered Innovation', 'font-size:13px; color:#8B92B8;');
+function initAnalytics() {
+    const ID = 'G-SJQPFG6QYC';
+    // Inject the gtag.js script (only once)
+    if (!document.querySelector(`script[src*="${ID}"]`)) {
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = `https://www.googletagmanager.com/gtag/js?id=${ID}`;
+        document.head.appendChild(s);
+    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', ID, { anonymize_ip: true, cookie_flags: 'SameSite=None;Secure' });
+}
+
+/* ─── Console Branding ────────────────────────────────────────── */
+console.log('%c⚡ HAKILABZ', 'font-size:28px; font-weight:900; letter-spacing:-1px; color:#E8192C;');
+console.log('%cAI-Powered Innovation', 'font-size:13px; color:#86868B; letter-spacing:0.05em;');
+console.log('%cwant to join the team? → info@hakilabz.ai', 'font-size:11px; color:#636366;');
