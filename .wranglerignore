@@ -1,0 +1,7 @@
+.git
+.gitignore
+.wrangler
+.DS_Store
+hakilabz.code-workspace
+/tmp
+*.md

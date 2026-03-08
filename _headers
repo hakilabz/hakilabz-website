@@ -1,0 +1,16 @@
+# Serve all pages with X-Robots-Tag to prevent image indexing
+/*
+  X-Robots-Tag: noimageindex, noarchive
+  X-Content-Type-Options: nosniff
+
+# Prevent Google Image Bot from serving logo images directly
+/assets/images/hakilabz-logo.png
+  X-Robots-Tag: none
+  Content-Disposition: attachment; filename="hakilabz-logo.png"
+
+/assets/images/hakilabz-logo-dark.png
+  X-Robots-Tag: none
+  Content-Disposition: attachment; filename="hakilabz-logo-dark.png"
+
+/assets/images/partygamehub-icon.jpg
+  X-Robots-Tag: none

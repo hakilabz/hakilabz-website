@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block all crawlers from directly accessing image files
+User-agent: Googlebot-Image
+Disallow: /assets/images/hakilabz-logo.png
+Disallow: /assets/images/hakilabz-logo-dark.png
+Disallow: /assets/images/partygamehub-icon.jpg
+
+Sitemap: https://hakilabz.ai/sitemap.xml
