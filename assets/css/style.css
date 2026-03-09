@@ -249,13 +249,15 @@ button {
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 40px;
-    height: 40px;
+    width: 44px;     /* larger tap target */
+    height: 44px;
     background: transparent;
     border: none;
     border-radius: var(--r-sm);
     cursor: pointer;
     padding: 8px;
+    touch-action: manipulation; /* prevents 300ms delay on iOS */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hamburger span {
@@ -286,11 +288,10 @@ button {
         display: flex;
     }
 
-    .theme-toggle-btn {
+    /* Hide desktop theme toggle; show only inside open mobile menu */
+    .nav-links > li:has(> .theme-toggle-btn) {
         display: none;
     }
-
-    /* shown in mobile menu */
 
     .nav-links {
         position: fixed;
@@ -299,32 +300,36 @@ button {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        padding: 1rem 1.25rem;
+        padding: 0.5rem 0;
         display: none;
         z-index: 850;
         border-top: 1px solid var(--border);
         overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-links.open {
         display: flex;
     }
 
-    .nav-links>li>a {
+    .nav-links > li > a {
         font-size: 1.05rem;
-        padding: 0.9rem 0.5rem;
+        padding: 1rem 1.25rem;
         border-radius: 0;
         border-bottom: 1px solid var(--divider);
+        display: block;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
     }
 
-    /* Show theme toggle inside mobile menu */
-    .nav-links>li:last-child>.theme-toggle-btn {
+    /* Show theme toggle as last row in mobile menu */
+    .nav-links.open > li:has(> .theme-toggle-btn) {
+        display: flex;
+        padding: 0.75rem 1.25rem;
+    }
+    .nav-links.open > li:has(> .theme-toggle-btn) > .theme-toggle-btn {
         display: inline-flex;
-        width: auto;
-        border-radius: var(--r-pill);
-        padding: 0.5rem 1rem;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
     }
 }
 

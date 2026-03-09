@@ -53,7 +53,8 @@ function closeNav() {
     document.body.style.overflow = '';
 }
 
-hamburger?.addEventListener('click', () => {
+hamburger?.addEventListener('click', e => {
+    e.stopPropagation(); // prevent document click handler from immediately closing
     const open = navLinks?.classList.toggle('open');
     hamburger.classList.toggle('open', open);
     hamburger.setAttribute('aria-expanded', String(open));
@@ -61,9 +62,13 @@ hamburger?.addEventListener('click', () => {
 });
 
 document.addEventListener('click', e => {
-    if (hamburger && navLinks && !hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        closeNav();
-    }
+    if (!navLinks?.classList.contains('open')) return;
+    if (!navLinks.contains(e.target)) closeNav();
+});
+
+// Close on escape key
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeNav();
 });
 
 window.addEventListener('resize', () => { if (window.innerWidth > 768) closeNav(); }, { passive: true });
