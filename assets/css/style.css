@@ -249,14 +249,16 @@ button {
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 44px;     /* larger tap target */
+    width: 44px;
+    /* larger tap target */
     height: 44px;
     background: transparent;
     border: none;
     border-radius: var(--r-sm);
     cursor: pointer;
     padding: 8px;
-    touch-action: manipulation; /* prevents 300ms delay on iOS */
+    touch-action: manipulation;
+    /* prevents 300ms delay on iOS */
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -289,7 +291,7 @@ button {
     }
 
     /* Hide desktop theme toggle; show only inside open mobile menu */
-    .nav-links > li:has(> .theme-toggle-btn) {
+    .nav-links>li:has(> .theme-toggle-btn) {
         display: none;
     }
 
@@ -313,7 +315,7 @@ button {
         display: flex;
     }
 
-    .nav-links > li > a {
+    .nav-links>li>a {
         font-size: 1.05rem;
         padding: 1rem 1.25rem;
         border-radius: 0;
@@ -324,11 +326,12 @@ button {
     }
 
     /* Show theme toggle as last row in mobile menu */
-    .nav-links.open > li:has(> .theme-toggle-btn) {
+    .nav-links.open>li:has(> .theme-toggle-btn) {
         display: flex;
         padding: 0.75rem 1.25rem;
     }
-    .nav-links.open > li:has(> .theme-toggle-btn) > .theme-toggle-btn {
+
+    .nav-links.open>li:has(> .theme-toggle-btn)>.theme-toggle-btn {
         display: inline-flex;
     }
 }
@@ -1081,42 +1084,69 @@ button {
 }
 
 .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-link {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    font-size: 0.95rem;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    font-weight: 500;
     color: var(--text-2);
-    transition: color var(--dur-fast), transform var(--dur-fast) var(--spring);
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: color var(--dur-fast), border-color var(--dur-fast), transform var(--dur-mid) var(--spring), box-shadow var(--dur-mid);
+    text-decoration: none;
 }
 
 .contact-link:hover {
     color: var(--red);
-    transform: translateX(4px);
+    border-color: rgba(232, 25, 44, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(232, 25, 44, 0.12);
 }
 
 .contact-link-icon {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     border-radius: var(--r-md);
     background: var(--grad-subtle);
     border: 1px solid rgba(232, 25, 44, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     flex-shrink: 0;
     transition: background var(--dur-mid), transform var(--dur-mid) var(--spring);
 }
 
 .contact-link:hover .contact-link-icon {
     background: var(--grad);
-    transform: scale(1.05);
+    transform: scale(1.08);
+}
+
+@media (max-width: 640px) {
+    .contact-links {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-link {
+        flex-direction: row;
+        text-align: left;
+        padding: 1rem 1.25rem;
+    }
 }
 
 /* Contact form */
