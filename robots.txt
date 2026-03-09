@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /404.html
 
 # Block all crawlers from directly accessing image files
 User-agent: Googlebot-Image
