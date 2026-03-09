@@ -290,6 +290,15 @@ button {
         display: flex;
     }
 
+    /* iOS Safari fix: backdrop-filter on .navbar creates a stacking context
+       that traps position:fixed children inside the 64px navbar height.
+       Remove it on mobile and use solid opaque background. */
+    .navbar {
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        background: var(--bg) !important;
+    }
+
     /* Hide desktop theme toggle; show only inside open mobile menu */
     .nav-links>li:has(> .theme-toggle-btn) {
         display: none;
@@ -297,14 +306,18 @@ button {
 
     .nav-links {
         position: fixed;
-        inset: 64px 0 0 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding-top: 64px;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
         background: var(--bg);
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        padding: 0.5rem 0;
         display: none;
-        z-index: 850;
+        z-index: 1100;
         border-top: 1px solid var(--border);
         overflow-y: auto;
         overscroll-behavior: contain;
